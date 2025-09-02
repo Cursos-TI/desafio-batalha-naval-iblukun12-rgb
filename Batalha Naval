@@ -1,12 +1,47 @@
 #include <stdio.h>
 
+#define TAM 6 // tamanho do tabuleiro
+
 int main() {
-    // Cada linha do tabuleiro
-    printf("~ ~ ~ ~ ~\n");
-    printf("~ ~ N ~ ~\n"); // Navio 1 parte 1
-    printf("~ ~ N ~ ~\n"); // Navio 1 parte 2
-    printf("N N N ~ ~\n"); // Navio 1 parte 3 e Navio 2
-    printf("~ ~ ~ ~ ~\n");
+    int tabuleiro[TAM][TAM] = {0};
+    int i, j;
+
+    // posições fixas dos navios
+    int linha1 = 1, coluna1 = 1; // navio 1 começa aqui
+    int tam1 = 3; // tamanho do navio 1
+
+    int linha2 = 3, coluna2 = 2; // navio 2 começa aqui
+    int tam2 = 3; // tamanho do navio 2
+
+    // colocando navio 1 (horizontal)
+    for (j = coluna1; j < coluna1 + tam1; j++) {
+        tabuleiro[linha1][j] = 1;
+    }
+
+    // colocando navio 2 (vertical)
+    for (i = linha2; i < linha2 + tam2; i++) {
+        tabuleiro[i][coluna2] = 2;
+    }
+
+    // mostrando coordenadas
+    printf("Coordenadas do navio 1:\n");
+    for (j = coluna1; j < coluna1 + tam1; j++) {
+        printf("(%d, %d)\n", linha1, j);
+    }
+
+    printf("Coordenadas do navio 2:\n");
+    for (i = linha2; i < linha2 + tam2; i++) {
+        printf("(%d, %d)\n", i, coluna2);
+    }
+
+    // mostrando tabuleiro
+    printf("\nTabuleiro:\n");
+    for (i = 0; i < TAM; i++) {
+        for (j = 0; j < TAM; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
